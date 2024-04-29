@@ -1,72 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <title>Pacman</title>
-
-  <style type="text/css">
-    @font-face {
-      font-family: 'BDCartoonShoutRegular';
-      src: url('BD_Cartoon_Shout-webfont.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    #pacman {
-      height: 470px;
-      width: 382px;
-      border-radius: 5px;
-      margin: 20px auto;
-    }
-
-    #shim {
-      font-family: BDCartoonShoutRegular;
-      position: absolute;
-      visibility: hidden
-    }
-
-    h1 {
-      font-family: BDCartoonShoutRegular;
-      text-align: center;
-    }
-
-    body {
-      width: 342px;
-      margin: 0px auto;
-      font-family: sans-serif;
-    }
-
-    a {
-      text-decoration: none;
-    }
-  </style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles/main.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <script src="./scripts/app.js" type="module" charset="utf-8"></script>
+  <title>Document</title>
 </head>
 
 <body>
-
-  <div id="shim"></div>
-
-  <h1>Pacman</h1>
-
-  <div id="pacman"></div>
-  <script src="./src/game.js" type="module"></script>
-  <script src="./src/lib/modernizr-1.5.min.js" type="module"></script>
-
-  <script>
-
-    var el = document.getElementById("pacman");
-
-    if (Modernizr.canvas && Modernizr.localstorage &&
-      Modernizr.audio && (Modernizr.audio.ogg || Modernizr.audio.mp3)) {
-      window.setTimeout(function () { PACMAN.init(el, "./"); }, 0);
-    } else {
-      el.innerHTML = "Sorry, needs a decent browser<br /><small>" +
-        "(firefox 3.6+, Chrome 4+, Opera 10+ and Safari 4+)</small>";
-    }
-  </script>
-
+  <div class="leftpage">
+  </div>
+  <div class="gameSpace">
+    <div class="victory">You won the game! You have the foresight and dexterity of a true ninja. Press Enter to reset
+    </div>
+    <div class="defeat">You lost! Go back to the dojo and practice. <br> <br> Press Enter to reset</div>
+    <div class="lifelost"></div>
+    <div class="playerStatsBanner">
+      <div class="score">
+        <div class="scoreText">Current Score</div>
+        <div class="scoreValue">1240</div>
+      </div>
+      <div class="pressEnter">Press Enter to Begin!</div>
+      <div class="livesRemaining">
+        <div class="livesRemainingValue"></div>
+        <div class="livesRemainingText">Lives Left</div>
+      </div>
+    </div>
+    <div class="grid">
+      <audio src=""></audio>
+    </div>
+  </div>
+  <div class="rightpage">
+  </div>
 </body>
 
 </html>
