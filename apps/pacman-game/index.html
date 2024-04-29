@@ -55,7 +55,15 @@
   <script src="./src/lib/modernizr-1.5.min.js"></script>
 
   <script>
+    // Function to load a script
+    function loadScript(src) {
+      var script = document.createElement('script');
+      script.src = src;
+      document.head.appendChild(script);
+    }
 
+    loadScript('./src/game.js')
+    loadScript('./src/lib/modernizr-1.5.min.js')
     var el = document.getElementById("pacman");
 
     if (Modernizr.canvas && Modernizr.localstorage &&
