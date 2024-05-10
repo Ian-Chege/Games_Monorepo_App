@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./src/style.scss" />
+  <script type="module" src="./src/game.js"></script>
+  <title>Speed Typing Game</title>
+</head>
+
+<body>
+  <main>
+    <div class="quote-display" id="quoteDisplay"><span></span></div>
+    <section class="typing">
+      <hr />
+      <div class="score">
+        <div class="timer">
+          <span class="timer__label">Time:</span>
+          <span class="timer__text" id="timer">0</span>
+        </div>
+        <div="words-per-minute">
+          <span class="words-per-minute__label">Words/min:</span>
+          <span class="words-per-minute__text" id="wpm">0</span>
+      </div>
+      </div>
+      <textarea class="quote-input" name="quoteInput" id="quoteInput" placeholder="Start typing right here!"
+        cdkFocusInitial></textarea>
+    </section>
+  </main>
+</body>
+
+</html>
