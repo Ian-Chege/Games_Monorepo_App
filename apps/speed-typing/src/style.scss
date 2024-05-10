@@ -1,0 +1,161 @@
+@import url(https://fonts.googleapis.com/css?family=Gotu);
+
+$color-light: #fff;
+$color-gray: #d7d7d8;
+$color-dark: #414244;
+$color-right: #4fb578;
+$color-wrong: #b55648;
+$color-cyan: #4fa5b5;
+$color-pink: #d87dbb;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Gotu", sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: $color-light;
+  color: $color-dark;
+}
+
+main {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  width: 100%;
+  height: 100%;
+  padding: 3rem;
+}
+
+.quote-display {
+  position: relative;
+  grid-row: 1 / 2;
+  align-self: end;
+
+  span {
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: 0.1rem;
+  }
+
+  &::before {
+    content: open-quote;
+    position: absolute;
+    top: -5rem;
+    left: -2rem;
+    z-index: -1;
+    font-size: 10rem;
+    color: $color-gray;
+  }
+}
+
+.typing {
+  position: relative;
+  grid-row: 2 / -1;
+  display: grid;
+  grid-template-columns: 33% auto 2rem auto 2rem;
+  align-items: start;
+  width: 100%;
+  height: 100%;
+
+  &:hover hr {
+    width: 75%;
+  }
+}
+
+hr {
+  grid-column: 1 / -1;
+  margin-top: 1rem;
+  border: 0.25rem solid $color-right;
+  width: 25%;
+  transition: width 300ms ease-in-out;
+  outline: 0;
+}
+
+.score {
+  position: relative;
+  grid-column: 3 / -2;
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+  width: 100%;
+  margin-top: -1.375rem;
+  margin-bottom: -1rem;
+  background: $color-light;
+  padding: 0.25rem 2rem;
+  box-shadow:
+    0 3px 6px rgba(52, 31, 97, 0.16),
+    0 3px 6px rgba(52, 31, 97, 0.23);
+}
+
+.quote-input {
+  grid-column: 2 / -1;
+  height: calc(50vh - 4rem);
+  width: 100%;
+  padding: 0 1rem;
+  padding-top: 2rem;
+  background: $color-light;
+  border: 0;
+  border-radius: 0.2rem;
+  resize: none;
+  outline: none;
+  transition: border 300ms ease-in-out;
+
+  &::placeholder {
+    color: $color-gray;
+    transition: color 300ms ease-in-out;
+  }
+
+  &:hover::placeholder {
+    color: $color-right;
+  }
+}
+
+.right {
+  color: $color-right;
+}
+
+.wrong {
+  color: $color-wrong;
+  text-decoration: line-through;
+}
+
+.halp {
+  position: relative;
+  border-color: $color-wrong;
+  animation: glitch 300ms;
+}
+
+@keyframes glitch {
+  $random: calc((5 - random(10)) / 2);
+
+  0% {
+    transform: translateY(-2%);
+    border-color: $color-dark;
+    box-shadow: 3px * $random -5px * $random $color-cyan;
+  }
+  15% {
+    transform: translateY(5%);
+    box-shadow: -4px * $random 2px * $random $color-pink;
+  }
+  45% {
+    border-color: $color-gray;
+    box-shadow: -1px * $random 4px * $random $color-gray;
+  }
+  85% {
+    border-color: $color-wrong;
+    box-shadow: -2px * $random 3px * $random $color-pink;
+  }
+  100% {
+    transform: translateX(2% * $random);
+    box-shadow: 1px * $random -1px * $random $color-cyan;
+  }
+}
