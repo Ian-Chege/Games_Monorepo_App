@@ -25,10 +25,6 @@ importers:
         version: 1.13.3
 
   apps/archery:
-    dependencies:
-      '@repo/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
@@ -47,10 +43,6 @@ importers:
         version: 5.1.4(sass@1.77.0)
 
   apps/pacman:
-    dependencies:
-      '@repo/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
@@ -70,9 +62,6 @@ importers:
 
   apps/speed-typing:
     dependencies:
-      '@repo/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
       sass:
         specifier: ^1.77.0
         version: 1.77.0
@@ -94,10 +83,6 @@ importers:
         version: 5.1.4(sass@1.77.0)
 
   apps/tic-tac-toe:
-    dependencies:
-      '@repo/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
@@ -116,32 +101,6 @@ importers:
         version: 5.1.4(sass@1.77.0)
 
   apps/tower-building:
-    dependencies:
-      '@repo/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
-    devDependencies:
-      '@repo/eslint-config':
-        specifier: workspace:*
-        version: link:../../packages/config-eslint
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../../packages/config-typescript
-      eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
-      typescript:
-        specifier: ^5.3.3
-        version: 5.3.3
-      vite:
-        specifier: ^5.1.4
-        version: 5.1.4(sass@1.77.0)
-
-  apps/web:
-    dependencies:
-      '@repo/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
@@ -172,21 +131,6 @@ importers:
         version: 9.1.0(eslint@8.57.0)
 
   packages/config-typescript: {}
-
-  packages/ui:
-    devDependencies:
-      '@repo/eslint-config':
-        specifier: workspace:*
-        version: link:../config-eslint
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../config-typescript
-      eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
-      typescript:
-        specifier: ^5.3.3
-        version: 5.3.3
 
 packages:
 
