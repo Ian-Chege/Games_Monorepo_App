@@ -31,6 +31,49 @@
   <script type="module">
     import { main } from './src/game.js';
     main();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('token');
+      let timeLeft = 0;
+
+      const checkToken = () => {
+        console.log('Checking token:', token);
+        fetch('http://localhost:3000/api/v1/validate-token', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ token }),
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Validation response:', data);
+            if (data.valid) {
+              timeLeft = data.timeLeft;
+              console.log(`Time left: ${timeLeft} minutes`);
+            } else {
+              console.log('Time is over based on server validation');
+              alert('Time is over!');
+              window.close();
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            if (timeLeft > 2) {
+              // Grace period logic
+              setTimeout(checkToken, 2000);
+            } else {
+              console.log('Time is over due to repeated error');
+              alert('Time is over!');
+              window.close();
+            }
+          });
+      };
+
+      setInterval(checkToken, 60000); // Check every minute
+      checkToken();
+    });
   </script>
 </body>
 
