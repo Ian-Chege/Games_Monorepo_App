@@ -39,7 +39,7 @@
 
       const checkToken = () => {
         console.log('Checking token:', token);
-        fetch('http://localhost:3000/api/v1/validate-token', {
+        fetch('https://vercel.live/link/e-digikids-git-fix-arcade-digikids.vercel.app?via=deployment-domains-list-branch/api/v1/validate-token', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -51,9 +51,7 @@
             console.log('Validation response:', data);
             if (data.valid) {
               timeLeft = data.timeLeft;
-              console.log(`Time left: ${timeLeft} minutes`);
             } else {
-              console.log('Time is over based on server validation');
               alert('Time is over!');
               window.close();
             }
@@ -64,14 +62,13 @@
               // Grace period logic
               setTimeout(checkToken, 2000);
             } else {
-              console.log('Time is over due to repeated error');
               alert('Time is over!');
               window.close();
             }
           });
       };
 
-      setInterval(checkToken, 60000); // Check every minute
+      setInterval(checkToken, 60000);
       checkToken();
     });
   </script>
