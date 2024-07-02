@@ -27,6 +27,9 @@
         <p>Move every ball to the center. Press E to restart the game. Ready for hard mode? Press H</p>
       </div>
     </div>
+    <div id="overlay" class="hidden">
+      <div id="message">Time is over!</div>
+    </div>
   </div>
   <script type="module">
     import { main } from './src/game.js';
@@ -36,6 +39,14 @@
       const urlParams = new URLSearchParams(window.location.search);
       const token = urlParams.get('token');
       let timeLeft = 0;
+
+      const showOverlay = () => {
+        document.getElementById('overlay').classList.remove('hidden');
+      };
+
+      const disableGame = () => {
+        document.getElementById('game').style.pointerEvents = 'none';
+      };
 
       const checkToken = () => {
         console.log('Checking token:', token);
@@ -52,8 +63,9 @@
             if (data.valid) {
               timeLeft = data.timeLeft;
             } else {
-              alert('Time is over!');
-              window.close();
+              console.log('Time is over based on server validation');
+              showOverlay();
+              disableGame();
             }
           })
           .catch(error => {
@@ -62,8 +74,9 @@
               // Grace period logic
               setTimeout(checkToken, 2000);
             } else {
-              alert('Time is over!');
-              window.close();
+              console.error('Error:', error);
+              showOverlay();
+              disableGame();
             }
           });
       };
@@ -72,6 +85,32 @@
       checkToken();
     });
   </script>
+  <style>
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      z-index: 10;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #message {
+      padding: 20px;
+      background: rgba(255, 0, 0, 0.85);
+      border-radius: 10px;
+    }
+  </style>
 </body>
 
 </html>
